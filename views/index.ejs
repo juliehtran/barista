@@ -1,55 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-  	<meta charset="utf-8">
-  	<meta name="description" content="Your description goes here">
-  	<meta name="keywords" content="one, two, three">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="https://kit.fontawesome.com/aa1a2a1c33.js" crossorigin="anonymous"></script>
 
-		<title>Blank Template</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Your description goes here">
+	<meta name="keywords" content="one, two, three">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;1,600&family=Playfair+Display&display=swap"
+		rel="stylesheet">
+	<script src="https://kit.fontawesome.com/aa1a2a1c33.js" crossorigin="anonymous"></script>
 
-		<!-- external CSS link -->
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
-	<body>
-		<a href="/login" class="login">Log in</a>
-		<main>
-			<h1>May I take your order?</h1>
+	<title>Resilient Barista</title>
+
+	<!-- external CSS link -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg">
+	<div class="nav">
+		<% if (loggedIn) { %>
+			<a href="/logout" class="login">Log out</a>
+		<% } else { %>
+			<a href="/login" class="login">Log in</a>
+		<% } %>
+	</div>
+
+	<div class="page-container">
+		<div class="order-form-container">
+			<h1 class="page-title">May I take your order?</h1>
 			<form class="orders" action="/orders" method="post">
 				<input type="text" name="order" placeholder="order">
 				<input type="text" name="name" placeholder="name">
 				<button type="submit" name="button">Submit</button>
 			</form>
+		</div>
 
-			<section class="currentOrders">
+		<div class="all-order-container">
+			<section class="order-container">
+				<div class="order-container-header">
+					<div>
+						<h2>Orders</h2>
+					</div>
+				</div>
+				<hr>
 				<ul>
-					<% uncompletedOrders.filter(order => !order.completed).forEach((order) => {%>
+					<% uncompletedOrders.filter(order=> !order.completed).forEach((order) => {%>
 						<li class="order">
 							<% if(loggedIn) { %>
 								<i class="far fa-check-circle complete-button" data-id="<%= order._id %>"></i>
-							<% } %>
-							<%= order.order %> for <%= order.name %>
+								<% } %>
+									<%= order.order %> for <%= order.name %>
 						</li>
 					<% }) %>
 				</ul>
 			</section>
 
-			<section class="completeOrders">
+			<section class="order-container">
+				<div class="order-container-header">
+					<div>
+						<h2>Serve Up!</h2>
+					</div>
+				</div>
+				<hr>
 				<ul>
-					<% completedOrders.filter(order => order.completed).forEach((order) => {%>
+					<% completedOrders.filter(order=> order.completed).forEach((order) => {%>
 						<li class="order">
 							<% if(loggedIn) { %>
 								<i class="far fa-trash-alt delete-button" data-id="<%= order._id %>"></i>
-							<% } %>
-							<%= order.order %> for <%= order.name %>
+								<% } %>
+									<%= order.order %> for <%= order.name %>
 						</li>
 					<% }) %>
 				</ul>
 			</section>
-		</main>
+		</div>
+	</div>
 
-		<script type="text/javascript" src="js/main.js"></script>
-	</body>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+
 </html>

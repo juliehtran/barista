@@ -1,0 +1,51 @@
+body {
+   font-family: 'Montserrat', sans-serif;
+}
+
+.login-bg {
+   background-image: url('/img/login.png');
+}
+
+.signup-bg {
+   background-image: url('/img/signup.png');
+}
+
+.bg {
+   background-color: #F1D1B5;
+   background-size: cover;
+   background-repeat: no-repeat;
+   font-family: 'PlayFair Display', serif;
+   color: white;
+   font-size: 2em;
+   letter-spacing: 1px;
+}
+
+.logo-img {
+   width: 40%;
+}
+
+.container {
+   display: flex;
+   justify-content: center;
+   width: 80%;
+   align-items: center;
+   flex-direction: column;
+   flex: 1;
+}
+
+.page-container {
+   margin-top: 10vh;
+   display: flex;
+}
+
+.nothing-lol {
+   width: 30vw;
+}
+
+.login-form {
+   width: 40%;
+}
+
+.form-group {
+   margin-top: 2em;
+}
