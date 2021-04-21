@@ -20,3 +20,5 @@ Welcome to Resilient Cafe, a mock cafe ordering application! Place your order an
 1. run `node server.js`
 2. Navigate to `localhost:8080`
 3. Login using admin@mail.com, pw: admin
+
+View here: https://resilient-cafe.herokuapp.com/
